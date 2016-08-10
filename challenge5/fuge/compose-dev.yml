@@ -25,3 +25,13 @@ frontend:
     - serializer:serializer
   ports:
     - 10001:10001
+broker:
+  build: ../broker/
+  container_name: broker
+  environment:
+    - SERIALIZER_HOST=127.0.0.1
+    - SERIALIZER_PORT=10000
+  links:
+    - serializer:serializer
+  ports:
+    - 10002:10002
